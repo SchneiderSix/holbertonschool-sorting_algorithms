@@ -8,7 +8,8 @@
 */
 void bubble_sort(int *array, size_t size)
 {
-	int i, j, tmp;
+	unsigned long int i, j;
+	int tmp;
 
 	print_array(array, size);
 	printf("\n");
