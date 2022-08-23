@@ -13,28 +13,28 @@ void insertion_sort_list(listint_t **list)
 	if (!list || !*list)
 		return;
 
-	nex = (*list)->(*nex)t;
-	while (((*nex) = (*nex)->(*nex)t))
+	nex = (*list)->next;
+	while (((*nex) = (*nex)->next))
 	{
 		while ((*nex)->prev && (*nex)->prev->n > (*nex)->n)
 		{
-			(*nex)->prev->(*nex)t = (*nex)->(*nex)t;
+			(*nex)->prev->next = (*nex)->next;
 
-			if ((*nex)->(*nex)t)
-				(*nex)->(*nex)t->prev = (*nex)->prev;
+			if ((*nex)->next)
+				(*nex)->next->prev = (*nex)->prev;
 
-			(*nex)->(*nex)t = (*nex)->prev;
+			(*nex)->next = (*nex)->prev;
 
-			if ((*nex)->(*nex)t)
+			if ((*nex)->next)
 			{
-				(*nex)->prev = (*nex)->(*nex)t->prev;
-				(*nex)->(*nex)t->prev = (*nex);
+				(*nex)->prev = (*nex)->next->prev;
+				(*nex)->next->prev = (*nex);
 			}
 
 			if (!(*nex)->prev)
 				*list = (*nex);
 			else
-				(*nex)->prev->(*nex)t = (*nex);
+				(*nex)->prev->next = (*nex);
 			print_list(*list);
 		}
 	}
