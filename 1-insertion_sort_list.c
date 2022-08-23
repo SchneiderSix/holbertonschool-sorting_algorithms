@@ -12,7 +12,7 @@ void insertion_sort_list(listint_t **list)
 
 	if (!list || !*list)
 		return;
-	while (nex = nex->next)
+	while ((nex = nex->next))
 	{
 		while (nex->prev && nex->prev->n > nex->n)
 		{
