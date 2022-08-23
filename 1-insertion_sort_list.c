@@ -7,15 +7,6 @@
 * Return: nothing
 */
 void insertion_sort_list(listint_t **list)
-#include "sort.h"
-
-/**
-* insertion_sort_list - change place
-* of node min to max
-* @list: node
-* Return: nothing
-*/
-void insertion_sort_list(listint_t **list)
 {
 	listint_t *nex;
 
