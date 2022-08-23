@@ -19,7 +19,7 @@ void insertion_sort_list(listint_t **list)
 			nex->prev->next = nex->next;
 
 			if (nex->next)
-   				nex->next->prev = nex->prev;
+				nex->next->prev = nex->prev;
 			nex->next = nex->prev;
 
 			if (nex->next)
@@ -29,7 +29,7 @@ void insertion_sort_list(listint_t **list)
 			}
 
 			if (!nex->prev)
-				nex = *list;
+				*list = nex;
 			else
 				nex->prev->next = nex;
 			print_list(*list);
