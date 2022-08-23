@@ -18,7 +18,7 @@ void selection_sort(int *array, size_t size)
 	{
 		if (array[asc] < array[asc + 1])
 			fas = 1;
-		i++;
+		asc++;
 	}
 	if (fas == 1)
 	{
