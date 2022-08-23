@@ -3,30 +3,35 @@
 /**
 * insertion_sort_list - change place
 * of node min to max
-* @list: head of node
+* @list: node
 * Return: nothing
 */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current = *list;
+	listint_t *nex = (*list)->next;
 
 	if (!list || !*list)
 		return;
-	while ((current = current->next))
+	while (nex = nex->next)
 	{
-		if (current->n > current->next->n)
+		while (nex->prev && nex->prev->n > nex->n)
 		{
-			if (current->prev)
-				current->prev->next = current->next;
+			nex->prev->next = nex->next;
 
-			if (current->next->next)
-   				current->next->next->prev = current;
+			if (nex->next)
+   				nex->next->prev = nex->prev;
+			nex->next = nex->prev;
 
-			current->next  = current->next->next;
-			current->next->prev = current->prev;
+			if (nex->next)
+			{
+				nex->prev = nex->next->prev;
+				nex->next->prev = nex;
+			}
 
-			current->next->next = current;
-			current->prev = current->next;
+			if (!nex->prev)
+				nex = *list;
+			else
+				nex->prev->next = nex;
 			print_list(*list);
 		}
 	}
