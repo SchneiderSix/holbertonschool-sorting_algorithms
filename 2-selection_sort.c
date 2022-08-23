@@ -9,18 +9,21 @@
 */
 void selection_sort(int *array, size_t size)
 {
-	unsigned int min_ix, i, j, asc;
+	unsigned int min_ix, i, j, fas = 0, asc = 0;
 	int tmp;
 
 	if (!array)
 		return;
-	for (asc = 0; asc < size - 1; asc++)
+	while (asc < size - 1)
 	{
 		if (array[asc] < array[asc + 1])
-		{
-			print_array(array, size);
-			return;
-		}
+			fas = 1;
+		i++;
+	}
+	if (fas == 1)
+	{
+		print_array(array, size)
+		return;
 	}
 	for (i = 0; i < size - 1; i++)
 	{
