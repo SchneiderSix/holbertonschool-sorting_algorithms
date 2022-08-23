@@ -1,9 +1,14 @@
 #include "sort.h"
 
+/**
+* insertion_sort_lit - change place
+* of node min to max
+* @list: head of node
+* Return: nothing
+*/
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current;
-	int tmp;
+	listint_t *current = *list;
 
 	if (!list && !*list)
 		return;
@@ -11,9 +16,17 @@ void insertion_sort_list(listint_t **list)
 	{
 		if (current->n > current->next->n)
 		{
-			tmp = current->n;
-			current->n = current->next->n;
-			current->next->n = tmp;
+			if (current->prev)
+    			current->prev->next = current->next;
+
+			if (current->next->next)
+   				 current->next->next->prev = current;
+
+			current->next  = current->next->next;
+			current->next->prev = current->prev;
+
+			current->next->next = current;
+			current->prev = current->next;
 			print_list(*list);
 		}
 	}
