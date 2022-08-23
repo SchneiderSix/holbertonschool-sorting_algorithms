@@ -22,7 +22,7 @@ void selection_sort(int *array, size_t size)
 	}
 	if (fas == 1)
 	{
-		print_array(array, size)
+		print_array(array, size);
 		return;
 	}
 	for (i = 0; i < size - 1; i++)
