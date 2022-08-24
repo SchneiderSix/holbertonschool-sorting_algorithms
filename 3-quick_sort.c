@@ -6,6 +6,7 @@
 * @array: array
 * @low: lowest index
 * @high: highest index
+* @size: size
 * Return: index at pivot
 */
 int partition(int *array, int low, int high)
@@ -44,6 +45,7 @@ int partition(int *array, int low, int high)
 * @array: array
 * @low: lowest index
 * @high: highest index
+* @size: size
 * Return: nothing
 */
 void recursive_sort(int *array, int low, int high)
