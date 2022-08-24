@@ -39,7 +39,12 @@ int partition(int *array, int low, int high, size_t size)
 
 /**
 * recursive_sort - recursive function to partition
-* depending on pivot 
+* depending on pivot
+* @array: array
+* @low: lowest index
+* @high: highest index
+* Return: nothing
+*/
 void recursive_sort(int *array, int low, int high, size_t size)
 {
 	int partytion;
@@ -54,8 +59,8 @@ void recursive_sort(int *array, int low, int high, size_t size)
 
 /**
 * quick_sort - sort array in asc
-* @array: explicit name
-* @size: explicit name
+* @array: array
+* @size: size
 * Return: nothing
 */
 void quick_sort(int *array, size_t size)
