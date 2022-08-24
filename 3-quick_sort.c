@@ -9,33 +9,29 @@
 * @size: size
 * Return: index at pivot
 */
-int partition(int *array, int low, int high)
+int partition(int *array, int low, int high, size_t size)
 {
 	int pivot = array[high], small = low, j, tmp;
-	size_t size = high + 1;
 
 	for (j = low; j <= array[high] - 1; j++)
 	{
 		/* smaller or equal than pivot */
 		if (array[j] <= pivot)
 		{
+			tmp = array[small];
+			array[small] = array[j];
+			array[j] = tmp;
 			if (small != j)
-			{
-				tmp = array[small];
-				array[small] = array[j];
-				array[j] = tmp;
 				print_array(array, size);
-			}
-		}
 		small++;
+		}
 	}
-	if (small != high)
-	{
+
 		tmp = array[small];
 		array[small] = array[high];
 		array[high] = tmp;
-		print_array(array, size);
-	}
+		if (small != high)
+			print_array(array, size);
 	return (small);
 }
 
@@ -48,15 +44,15 @@ int partition(int *array, int low, int high)
 * @size: size
 * Return: nothing
 */
-void recursive_sort(int *array, int low, int high)
+void recursive_sort(int *array, int low, int high, size_t size)
 {
 	int partytion;
 
 	if (low < high)
 	{
-		partytion = partition(array, low, high);
-		recursive_sort(array, low, partytion - 1);
-		recursive_sort(array, partytion + 1, high);
+		partytion = partition(array, low, high, size);
+		recursive_sort(array, low, partytion - 1, size);
+		recursive_sort(array, partytion + 1, high, size);
 	}
 }
 
@@ -70,5 +66,5 @@ void quick_sort(int *array, size_t size)
 {
 	if (!array)
 		return;
-	recursive_sort(array, 0, size - 1);
+	recursive_sort(array, 0, size - 1, size);
 }
