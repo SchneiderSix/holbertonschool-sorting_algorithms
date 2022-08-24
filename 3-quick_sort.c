@@ -8,9 +8,10 @@
 * @high: highest index
 * Return: index at pivot
 */
-int partition(int *array, int low, int high, size_t size)
+int partition(int *array, int low, int high)
 {
 	int pivot = array[high], small = low, j, tmp;
+	size_t size = high + 1;
 
 	for (j = low; j <= array[high] - 1; j++)
 	{
@@ -45,15 +46,15 @@ int partition(int *array, int low, int high, size_t size)
 * @high: highest index
 * Return: nothing
 */
-void recursive_sort(int *array, int low, int high, size_t size)
+void recursive_sort(int *array, int low, int high)
 {
 	int partytion;
 
 	if (low < high)
 	{
-		partytion = partition(array, low, high, size);
-		recursive_sort(array, low, partytion - 1, size);
-		recursive_sort(array, partytion + 1, high, size);
+		partytion = partition(array, low, high);
+		recursive_sort(array, low, partytion - 1);
+		recursive_sort(array, partytion + 1, high);
 	}
 }
 
@@ -67,5 +68,5 @@ void quick_sort(int *array, size_t size)
 {
 	if (!array)
 		return;
-	recursive_sort(array, 0 , size - 1, size);
+	recursive_sort(array, 0, size - 1);
 }
